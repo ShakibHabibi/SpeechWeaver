@@ -8,6 +8,12 @@ NC='\033[0m' # No Color
 
 echo -e "${YELLOW}Setting up SpeechWeaver...${NC}"
 
+# Update package lists if using apt
+if command_exists apt-get; then
+    echo -e "${YELLOW}Updating package lists...${NC}"
+    sudo apt-get update
+fi
+
 # Function to check if a command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
@@ -95,6 +101,6 @@ echo -e "${YELLOW}To run SpeechWeaver:${NC}"
 echo -e "1. Activate the virtual environment: ${GREEN}source venv/bin/activate${NC}"
 echo -e "2. Run the application: ${GREEN}python speechweaver.py${NC}"
 echo -e "\n${YELLOW}Keyboard shortcuts:${NC}"
-echo -e "Ctrl+1: Start recording"
-echo -e "Ctrl+2: Stop recording and transcribe"
-echo -e "Ctrl+3: Cancel current process" 
+echo -e "Alt+,: Start recording"
+echo -e "Alt+.: Stop recording and transcribe"
+echo -e "Alt+/: Cancel current process" 

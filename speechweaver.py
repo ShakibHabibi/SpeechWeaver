@@ -354,9 +354,9 @@ class TrayIcon:
         # Create main menu items
         menu_items = [
             pystray.MenuItem("Model", pystray.Menu(*model_menu_items)),
-            pystray.MenuItem("Start Recording (Ctrl+1)", self.start_recording),
-            pystray.MenuItem("Stop Recording (Ctrl+2)", self.stop_recording),
-            pystray.MenuItem("Cancel (Ctrl+3)", self.cancel_process),
+            pystray.MenuItem("Start Recording (Alt+,)", self.start_recording),
+            pystray.MenuItem("Stop Recording (Alt+.)", self.stop_recording),
+            pystray.MenuItem("Cancel (Alt+/)", self.cancel_process),
             pystray.MenuItem("Copy Last Transcription", self.copy_last_transcription),
             pystray.MenuItem("Copy Last Error", self.copy_last_error),
             pystray.MenuItem("Restart Application", self.restart_application),
@@ -525,10 +525,10 @@ def on_press(key):
         else:
             pressed_keys.add(key)
         
-        if (keyboard.Key.ctrl in pressed_keys and 
-            '1' in pressed_keys and 
+        if (keyboard.Key.alt in pressed_keys and 
+            ',' in pressed_keys and 
             not stt.recording):
-            print("Ctrl+1 pressed - Starting recording")
+            print("Alt+, pressed - Starting recording")
             stt.recording = True
             stt.audio_buffer = np.array([], dtype=stt.dtype)
             stt.processing_queue = queue.Queue()
@@ -540,10 +540,10 @@ def on_press(key):
             processing_thread.start()
             tray.update_icon("recording")
         
-        elif (keyboard.Key.ctrl in pressed_keys and 
-              '2' in pressed_keys and 
+        elif (keyboard.Key.alt in pressed_keys and 
+              '.' in pressed_keys and 
               stt.recording):
-            print("Ctrl+2 pressed - Stopping recording")
+            print("Alt+. pressed - Stopping recording")
             stt.recording = False
             tray.update_icon("processing")
             try:
@@ -554,9 +554,9 @@ def on_press(key):
                 print(f"Error processing audio: {e}")
             tray.update_icon("idle")
         
-        elif (keyboard.Key.ctrl in pressed_keys and 
-              '3' in pressed_keys):
-            print("Ctrl+3 pressed - Canceling process")
+        elif (keyboard.Key.alt in pressed_keys and 
+              '/' in pressed_keys):
+            print("Alt+/ pressed - Canceling process")
             stt.cancel_process()
             tray.update_icon("idle")
     except Exception as e:
@@ -598,9 +598,9 @@ def main():
     
     print("SpeechWeaver is running. Use the system tray icon or keyboard shortcuts to control.")
     print("Keyboard shortcuts:")
-    print("Ctrl+1: Start recording")
-    print("Ctrl+2: Stop recording and transcribe")
-    print("Ctrl+3: Cancel current process")
+    print("Alt+,: Start recording")
+    print("Alt+.: Stop recording and transcribe")
+    print("Alt+/: Cancel current process")
     
     # Run the tray icon
     tray.icon.run()

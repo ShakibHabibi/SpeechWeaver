@@ -1,29 +1,36 @@
 # SpeechWeaver
 
-A real-time speech-to-text application using OpenAI's Whisper model with a system tray interface.
+A powerful speech-to-text application that automatically types your transcribed speech into any text input field across your operating system. Using OpenAI's Whisper model with a system tray interface, SpeechWeaver seamlessly integrates with your workflow by automatically entering transcribed text wherever your cursor is focused.
+
+> **Note**: SpeechWeaver is currently only available for Linux systems, with Ubuntu being the primary supported platform. Windows and macOS support are not available at this time.
 
 ## Features
 
+- Automatically types transcribed text into any focused text field across your operating system
 - Real-time speech recognition using OpenAI's Whisper model
 - System tray interface for easy control
 - Support for multiple Whisper models (tiny to large-v3)
-- Automatic text typing
 - Clipboard support for copying transcriptions
 - Memory optimization for long recordings
 - CUDA support for GPU acceleration (if available)
 - Parallel processing of audio chunks for improved performance
 
+## Key Differentiator
+
+What sets SpeechWeaver apart from other speech-to-text applications is its seamless integration with your workflow. Instead of just transcribing speech to a separate window or clipboard, SpeechWeaver automatically types the transcribed text directly into whatever text field you're currently focused on. Whether you're writing an email, filling out a form, or coding in your IDE, SpeechWeaver will automatically enter the transcribed text right where you need it.
+
 ## Prerequisites
 
 - Python 3.8 or higher
-- Linux operating system (tested on Ubuntu/Debian)
+- Linux operating system (Ubuntu recommended, other distributions may work but are not officially supported)
 - NVIDIA GPU (optional, for CUDA support)
+- Ubuntu-specific dependencies (automatically installed by setup script)
 
 ## Quick Setup
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/SpeechWeaver.git
+git clone https://github.com/ShakibHabibi/SpeechWeaver.git
 cd SpeechWeaver
 ```
 
@@ -34,7 +41,7 @@ chmod +x setup.sh
 ```
 
 The setup script will:
-- Install all required system dependencies
+- Install all required Ubuntu system dependencies
 - Create a Python virtual environment
 - Install all Python dependencies
 - Set up CUDA support if available
@@ -44,7 +51,7 @@ The setup script will:
 
 If you prefer to set up manually or if the setup script doesn't work for your system:
 
-1. Install system dependencies:
+1. Install Ubuntu system dependencies:
 ```bash
 sudo apt-get update
 sudo apt-get install -y python3-pip portaudio19-dev ffmpeg xclip
@@ -75,13 +82,18 @@ python speechweaver.py
 
 ### Keyboard Shortcuts
 
-- `Ctrl+1`: Start recording
-- `Ctrl+2`: Stop recording and transcribe
-- `Ctrl+3`: Cancel current process
+- `Alt+,`: Start recording
+- `Alt+.`: Stop recording and transcribe
+- `Alt+/`: Cancel current process
 
 ### System Tray Menu
 
-The application provides a system tray icon with the following options:
+The application provides a system tray icon that changes color based on the current state:
+- ⚫ Gray: Application is idle and ready to record
+- 🟢 Green: Recording in progress
+- 🔵 Blue: Processing audio (transcribing)
+
+The system tray icon provides the following options:
 - Model selection (tiny to large-v3)
 - Start/Stop recording
 - Copy last transcription
@@ -113,7 +125,3 @@ If you encounter any issues:
 2. Ensure all system dependencies are installed
 3. Verify that your microphone is properly connected and selected as the default input device
 4. For GPU support, ensure you have the correct NVIDIA drivers installed
-
-## License
-
-[Your chosen license] 
