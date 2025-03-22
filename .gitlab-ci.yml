@@ -17,11 +17,30 @@ before_script:
 
 test:
   script:
-    # Test if the application can be imported without errors
-    - python3 -c "import whisper; import sounddevice; import numpy; import pynput; import torch; import psutil; from PIL import Image; import pystray; import pyperclip"
-    
-    # Test if the application can be run (without actual recording)
-    - python3 -c "from speechweaver import SpeechWeaver; stt = SpeechWeaver(); print('SpeechWeaver initialized successfully')"
-    
-    # Test if the application can be terminated gracefully
-    - python3 -c "import signal; import sys; from speechweaver import SpeechWeaver; stt = SpeechWeaver(); signal.signal(signal.SIGINT, lambda s, f: sys.exit(0)); signal.raise_signal(signal.SIGINT)" 
+    - |
+      python3 -c "
+      import whisper
+      import sounddevice
+      import numpy
+      import pynput
+      import torch
+      import psutil
+      from PIL import Image
+      import pystray
+      import pyperclip
+      "
+    - |
+      python3 -c "
+      from speechweaver import SpeechWeaver
+      stt = SpeechWeaver()
+      print('SpeechWeaver initialized successfully')
+      "
+    - |
+      python3 -c "
+      import signal
+      import sys
+      from speechweaver import SpeechWeaver
+      stt = SpeechWeaver()
+      signal.signal(signal.SIGINT, lambda s, f: sys.exit(0))
+      signal.raise_signal(signal.SIGINT)
+      " 
