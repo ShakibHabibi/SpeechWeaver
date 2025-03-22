@@ -1,0 +1,27 @@
+image: python:3.8-slim
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.pip-cache"
+
+cache:
+  paths:
+    - .pip-cache/
+    - venv/
+
+before_script:
+  - apt-get update && apt-get install -y python3-pip portaudio19-dev ffmpeg xclip
+  - python3 -m venv venv
+  - source venv/bin/activate
+  - pip install --upgrade pip
+  - pip install -r requirements.txt
+
+test:
+  script:
+    # Test if the application can be imported without errors
+    - python3 -c "import whisper; import sounddevice; import numpy; import pynput; import torch; import psutil; from PIL import Image; import pystray; import pyperclip"
+    
+    # Test if the application can be run (without actual recording)
+    - python3 -c "from speechweaver import SpeechWeaver; stt = SpeechWeaver(); print('SpeechWeaver initialized successfully')"
+    
+    # Test if the application can be terminated gracefully
+    - python3 -c "import signal; import sys; from speechweaver import SpeechWeaver; stt = SpeechWeaver(); signal.signal(signal.SIGINT, lambda s, f: sys.exit(0)); signal.raise_signal(signal.SIGINT)" 
