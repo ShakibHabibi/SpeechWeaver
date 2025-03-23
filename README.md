@@ -19,6 +19,20 @@ A powerful speech-to-text application that automatically types your transcribed 
 
 What sets SpeechWeaver apart from other speech-to-text applications is its seamless integration with your workflow. Instead of just transcribing speech to a separate window or clipboard, SpeechWeaver automatically types the transcribed text directly into whatever text field you're currently focused on. Whether you're writing an email, filling out a form, or coding in your IDE, SpeechWeaver will automatically enter the transcribed text right where you need it.
 
+## Demo Video
+
+Watch SpeechWeaver in action! [Watch Demo](demo.mp4)
+
+## Alternative to Wispr Flow
+
+SpeechWeaver serves as an alternative to Wispr Flow for Linux users. While Wispr Flow is only available for Mac and Windows, SpeechWeaver brings similar functionality to the Linux ecosystem with some key advantages:
+
+- Open-source and free to use
+- Direct integration with Linux systems
+- No subscription required
+- Built on OpenAI's Whisper model for high accuracy
+- Customizable through the system tray interface
+
 ## Prerequisites
 
 - Python 3.8 or higher
