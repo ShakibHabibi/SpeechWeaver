@@ -21,7 +21,11 @@ What sets SpeechWeaver apart from other speech-to-text applications is its seaml
 
 ## Demo Video
 
-Watch SpeechWeaver in action! [Watch Demo](demo.mkv)
+Watch SpeechWeaver in action! 
+
+[![SpeechWeaver Demo](https://img.shields.io/badge/Click_to_Watch_Demo-FF4785?style=for-the-badge&logo=github&logoColor=white)](demo.mkv)
+
+> Click the button above to watch the full demo video
 
 ## Alternative to Wispr Flow
 
