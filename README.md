@@ -21,7 +21,7 @@ What sets SpeechWeaver apart from other speech-to-text applications is its seaml
 
 ## Demo Video
 
-Watch SpeechWeaver in action! [Watch Demo](demo.mp4)
+Watch SpeechWeaver in action! [Watch Demo](demo.mkv)
 
 ## Alternative to Wispr Flow
 
