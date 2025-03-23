@@ -23,7 +23,7 @@ What sets SpeechWeaver apart from other speech-to-text applications is its seaml
 
 Watch SpeechWeaver in action! 
 
-https://github.com/ShakibHabibi/SpeechWeaver/assets/demo.mkv
+https://github.com/ShakibHabibi/SpeechWeaver/assets/demo.mp4
 
 ## Alternative to Wispr Flow
 
